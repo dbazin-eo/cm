@@ -8,7 +8,7 @@ dependencies:
   - bottleneck
   - dasel
   - datashader
-  - dtale
+  #- dtale
   - fire
   - fx
   - fzf
