@@ -38,22 +38,20 @@ dependencies:
   - s5cmd
   - speedtest-cli
   - ydata-profiling
-  - r-base
-  - r-tidyverse
-  - r-raster
-  - r-ncdf4
-  - r-rgdal
-  - r-ggplot2
-  - r-lubridate
-  - r-sf
-  - r-leaflet
-  - r-terra
-  - r-rastervis
-  - r-rnaturalearthdata
-  - r-rnaturalearth
-  - r-codetools
-  - r-httr
-  - r-ncmeta
-  - r-tidync
-  
-
+  #- r-base
+  #- r-tidyverse
+  #- r-raster
+  #- r-ncdf4
+  #- r-rgdal
+  #- r-ggplot2
+  #- r-lubridate
+  #- r-sf
+  #- r-leaflet
+  #- r-terra
+  #- r-rastervis
+  #- r-rnaturalearthdata
+  #- r-rnaturalearth
+  #- r-codetools
+  #- r-httr
+  #- r-ncmeta
+  #- r-tidync
