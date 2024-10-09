@@ -13,6 +13,7 @@ dependencies:
   - fx
   - fzf
   - geoviews
+  - git
   - hvplot
   - ipyleaflet
   - ipykernel
