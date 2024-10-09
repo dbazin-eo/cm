@@ -1,3 +1,13 @@
 #!/bin/bash
 
-pip install copernicusmarine --pre -U
+uv venv v1.3.3
+source v1.3.3/bin/activate
+uv pip install copernicusmarine
+deactivate
+uv venv pre-release
+source pre-release/bin/activate
+uv pip install copernicusmarine>=2.0.0a2
+deactivate
+uv venv v2-branch
+source v2-branch/bin/activate
+uv pip install git+https://github.com/mercator-ocean/copernicus-marine-toolbox@copernicusmarine-toolbox-v2
