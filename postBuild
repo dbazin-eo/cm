@@ -1,8 +1,8 @@
 #!/bin/bash
 
-echo 'export v1="source v1-latest/bin/activate"' >> ~/.bashrc
-echo 'export pre="source pre-release/bin/activate"' >> ~/.bashrc
-echo 'export v2="source v2-branch/bin/activate"' >> ~/.bashrc
+echo 'alias v1="source v1-latest/bin/activate"' >> ~/.bashrc
+echo 'alias pre="source pre-release/bin/activate"' >> ~/.bashrc
+echo 'alias v2="source v2-branch/bin/activate"' >> ~/.bashrc
 source ~/.bashrc
 uv venv v1-latest
 v1
