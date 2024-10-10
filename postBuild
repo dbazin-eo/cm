@@ -1,18 +1,23 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-shopt -s expand_aliases
 echo 'alias v1="source v1-latest/bin/activate"' >> ~/.bashrc
 echo 'alias pre="source pre-release/bin/activate"' >> ~/.bashrc
 echo 'alias v2="source v2-branch/bin/activate"' >> ~/.bashrc
+
+shopt -s expand_aliases
+
 source ~/.bashrc
+
 uv venv v1-latest
 v1
 uv pip install "copernicusmarine<2.0.0"
 deactivate
+
 uv venv pre-release
 pre
 uv pip install 'copernicusmarine>=2.0.0a2'
 deactivate
+
 uv venv v2-branch
 v2
 uv pip install git+https://github.com/mercator-ocean/copernicus-marine-toolbox@copernicusmarine-toolbox-v2
