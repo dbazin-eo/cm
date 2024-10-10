@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 echo 'alias v1="source v1-latest/bin/activate"' >> ~/.bashrc
 echo 'alias pre="source pre-release/bin/activate"' >> ~/.bashrc
