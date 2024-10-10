@@ -1,14 +1,23 @@
 #!/bin/bash
 
+# Add aliases to .bashrc only if they don't already exist
+if ! grep -q "alias v1=" ~/.bashrc; then
+    echo 'alias v1="source v1-latest/bin/activate"' >> ~/.bashrc
+fi
+if ! grep -q "alias pre=" ~/.bashrc; then
+    echo 'alias pre="source pre-release/bin/activate"' >> ~/.bashrc
+fi
+if ! grep -q "alias v2=" ~/.bashrc; then
+    echo 'alias v2="source v2-branch/bin/activate"' >> ~/.bashrc
+fi
+
+# Source the updated .bashrc to make aliases available in the current shell session
+source ~/.bashrc
+
+# Enable alias expansion in the script
 shopt -s expand_aliases
 
-#echo 'alias v1="source v1-latest/bin/activate"' >> ~/.bashrc
-#echo 'alias pre="source pre-release/bin/activate"' >> ~/.bashrc
-#echo 'alias v2="source v2-branch/bin/activate"' >> ~/.bashrc
-alias v1="source v1-latest/bin/activate"
-alias pre="source pre-release/bin/activate"
-alias v2="source v2-branch/bin/activate"
-
+# Use aliases defined earlier
 uv venv v1-latest
 v1
 uv pip install "copernicusmarine<2.0.0"
