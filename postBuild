@@ -1,7 +1,7 @@
 #!/bin/bash
 
-uv venv v1.3.3
-source v1.3.3/bin/activate
+uv venv v1-latest
+source v1-latest/bin/activate
 uv pip install copernicusmarine
 deactivate
 uv venv pre-release
@@ -11,3 +11,4 @@ deactivate
 uv venv v2-branch
 source v2-branch/bin/activate
 uv pip install git+https://github.com/mercator-ocean/copernicus-marine-toolbox@copernicusmarine-toolbox-v2
+deactivate
