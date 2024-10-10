@@ -1,14 +1,18 @@
 #!/bin/bash
 
+echo 'export v1="source v1-latest/bin/activate"' >> ~/.bashrc
+echo 'export pre="source pre-release/bin/activate"' >> ~/.bashrc
+echo 'export v2="source v2-branch/bin/activate"' >> ~/.bashrc
+source ~/.bashrc
 uv venv v1-latest
-source v1-latest/bin/activate
-uv pip install copernicusmarine
+v1
+uv pip install "copernicusmarine<2.0.0"
 deactivate
 uv venv pre-release
-source pre-release/bin/activate
-uv pip install copernicusmarine>=2.0.0a2
+pre
+uv pip install 'copernicusmarine>=2.0.0a2'
 deactivate
 uv venv v2-branch
-source v2-branch/bin/activate
+v2
 uv pip install git+https://github.com/mercator-ocean/copernicus-marine-toolbox@copernicusmarine-toolbox-v2
 deactivate
