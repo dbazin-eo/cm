@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+shopt -s expand_aliases
 echo 'alias v1="source v1-latest/bin/activate"' >> ~/.bashrc
 echo 'alias pre="source pre-release/bin/activate"' >> ~/.bashrc
 echo 'alias v2="source v2-branch/bin/activate"' >> ~/.bashrc
