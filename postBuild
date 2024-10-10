@@ -1,12 +1,13 @@
 #!/bin/bash
 
-echo 'alias v1="source v1-latest/bin/activate"' >> ~/.bashrc
-echo 'alias pre="source pre-release/bin/activate"' >> ~/.bashrc
-echo 'alias v2="source v2-branch/bin/activate"' >> ~/.bashrc
-
 shopt -s expand_aliases
 
-source ~/.bashrc
+#echo 'alias v1="source v1-latest/bin/activate"' >> ~/.bashrc
+#echo 'alias pre="source pre-release/bin/activate"' >> ~/.bashrc
+#echo 'alias v2="source v2-branch/bin/activate"' >> ~/.bashrc
+alias v1="source v1-latest/bin/activate"
+alias pre="source pre-release/bin/activate
+alias v2="source v2-branch/bin/activate
 
 uv venv v1-latest
 v1
