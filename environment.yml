@@ -33,6 +33,7 @@ dependencies:
   - python-duckdb
   - rasterio
   - rioxarray
+  - uv
   - zarr
   - rioxarray
   - session-info
