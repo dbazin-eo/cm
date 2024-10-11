@@ -13,15 +13,18 @@ fi
 
 uv venv v1-latest
 source v1-latest/bin/activate
-uv pip install "copernicusmarine<2.0.0"
+uv pip install "copernicusmarine<2.0.0" ipykernel
+v1-latest/bin/python -m ipykernel install --user --name v1
 deactivate
 
 uv venv pre-release
 source pre-release/bin/activate
-uv pip install 'copernicusmarine>=2.0.0a2'
+uv pip install 'copernicusmarine>=2.0.0a2' ipykernel
+pre-release/bin/python -m ipykernel install --user --name pre
 deactivate
 
 uv venv v2-branch
 source v2-branch/bin/activate
-uv pip install git+https://github.com/mercator-ocean/copernicus-marine-toolbox@copernicusmarine-toolbox-v2
+uv pip install git+https://github.com/mercator-ocean/copernicus-marine-toolbox@copernicusmarine-toolbox-v2 ipykernel
+v2-branch/bin/python -m ipykernel install --user --name v2
 deactivate
