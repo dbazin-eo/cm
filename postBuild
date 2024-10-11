@@ -10,6 +10,9 @@ fi
 if ! grep -q "alias v2=" ~/.bashrc; then
     echo 'alias v2="source v2-branch/bin/activate"' >> ~/.bashrc
 fi
+if ! grep -q "alias login=" ~/.bashrc; then
+    echo 'alias login="source login-branch/bin/activate"' >> ~/.bashrc
+fi
 
 uv venv v1-latest
 source v1-latest/bin/activate
@@ -27,4 +30,10 @@ uv venv v2-branch
 source v2-branch/bin/activate
 uv pip install git+https://github.com/mercator-ocean/copernicus-marine-toolbox@copernicusmarine-toolbox-v2 ipykernel
 v2-branch/bin/python -m ipykernel install --user --name v2
+deactivate
+
+uv venv login-branch
+source login-branch/bin/activate
+uv pip install git+https://github.com/mercator-ocean/copernicus-marine-toolbox@check-validity-login ipykernel
+login-branch/bin/python -m ipykernel install --user --name login
 deactivate
