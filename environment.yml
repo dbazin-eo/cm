@@ -23,6 +23,7 @@ dependencies:
   - lux
   - nodejs
   #- numba
+  - jupyter-offlinenotebook
   - panel
   - pip
   - pip:
