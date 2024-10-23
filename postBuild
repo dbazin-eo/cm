@@ -11,16 +11,16 @@ if ! grep -q "alias v2=" ~/.bashrc; then
     echo 'alias v2="source v2-branch/bin/activate"' >> ~/.bashrc
 fi
 if ! grep -q "alias describe=" ~/.bashrc; then
-    echo 'alias v2="source describe-branch/bin/activate"' >> ~/.bashrc
+    echo 'alias describe="source describe-branch/bin/activate"' >> ~/.bashrc
 fi
 if ! grep -q "alias skip=" ~/.bashrc; then
-    echo 'alias v2="source skip-branch/bin/activate"' >> ~/.bashrc
+    echo 'alias skip="source skip-branch/bin/activate"' >> ~/.bashrc
 fi
 if ! grep -q "alias auth=" ~/.bashrc; then
-    echo 'alias v2="source auth-branch/bin/activate"' >> ~/.bashrc
+    echo 'alias auth="source auth-branch/bin/activate"' >> ~/.bashrc
 fi
 if ! grep -q "alias ecmwf=" ~/.bashrc; then
-    echo 'alias v2="source ecmwf/bin/activate"' >> ~/.bashrc
+    echo 'alias ecmwf="source ecmwf/bin/activate"' >> ~/.bashrc
 fi
 
 
