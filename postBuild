@@ -62,6 +62,6 @@ deactivate
 
 uv venv auth-branch
 source auth-branch/bin/activate
-uv pip install git+https://github.com/mercator-ocean/copernicus-marine-toolbox@add-new-login-protocol
+uv pip install git+https://github.com/mercator-ocean/copernicus-marine-toolbox@add-new-login-protocol ipykernel
 auth-branch/bin/python -m ipykernel install --user --name auth
 deactivate
