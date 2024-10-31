@@ -4,20 +4,17 @@
 if ! grep -q "alias v1=" ~/.bashrc; then
     echo 'alias v1="source v1-latest/bin/activate"' >> ~/.bashrc
 fi
+if ! grep -q "alias v1-dev=" ~/.bashrc; then
+    echo 'alias v1="source v1-dev/bin/activate"' >> ~/.bashrc
+fi
 if ! grep -q "alias pre=" ~/.bashrc; then
     echo 'alias pre="source pre-release/bin/activate"' >> ~/.bashrc
 fi
 if ! grep -q "alias v2=" ~/.bashrc; then
-    echo 'alias v2="source v2-branch/bin/activate"' >> ~/.bashrc
-fi
-if ! grep -q "alias describe=" ~/.bashrc; then
-    echo 'alias describe="source describe-branch/bin/activate"' >> ~/.bashrc
+    echo 'alias v2="source v2-dev/bin/activate"' >> ~/.bashrc
 fi
 if ! grep -q "alias skip=" ~/.bashrc; then
     echo 'alias skip="source skip-branch/bin/activate"' >> ~/.bashrc
-fi
-if ! grep -q "alias auth=" ~/.bashrc; then
-    echo 'alias auth="source auth-branch/bin/activate"' >> ~/.bashrc
 fi
 if ! grep -q "alias ecmwf=" ~/.bashrc; then
     echo 'alias ecmwf="source ecmwf/bin/activate"' >> ~/.bashrc
@@ -42,26 +39,20 @@ uv pip install 'copernicusmarine>=2.0.0a2' ipykernel
 pre-release/bin/python -m ipykernel install --user --name pre
 deactivate
 
-uv venv v2-branch
-source v2-branch/bin/activate
-uv pip install git+https://github.com/mercator-ocean/copernicus-marine-toolbox@copernicusmarine-toolbox-v2 ipykernel
-v2-branch/bin/python -m ipykernel install --user --name v2
-deactivate
-
-uv venv describe-branch
-source describe-branch/bin/activate
-uv pip install git+https://github.com/mercator-ocean/copernicus-marine-toolbox@response-data-for-describe ipykernel
-describe-branch/bin/python -m ipykernel install --user --name describe
+uv venv v2-dev
+source v2-dev/bin/activate
+uv pip install git+https://github.com/mercator-ocean/copernicus-marine-toolbox ipykernel
+v2-dev/bin/python -m ipykernel install --user --name v2-dev
 deactivate
 
 uv venv skip-branch
 source skip-branch/bin/activate
-uv pip install git+https://github.com/mercator-ocean/copernicus-marine-toolbox@skip-existing ipykernel
+uv pip install git+https://github.com/mercator-ocean/copernicus-marine-toolbox@skip-existing-main ipykernel
 skip-branch/bin/python -m ipykernel install --user --name skip
 deactivate
 
-uv venv auth-branch
-source auth-branch/bin/activate
-uv pip install git+https://github.com/mercator-ocean/copernicus-marine-toolbox@add-new-login-protocol ipykernel
-auth-branch/bin/python -m ipykernel install --user --name auth
+uv venv v1-dev
+source v1-dev/bin/activate
+uv pip install git+https://github.com/mercator-ocean/copernicus-marine-toolbox@release/v1 ipykernel
+v1-dev/bin/python -m ipykernel install --user --name v1-dev
 deactivate
