@@ -13,9 +13,6 @@ fi
 if ! grep -q "alias v2=" ~/.bashrc; then
     echo 'alias v2="source v2-dev/bin/activate"' >> ~/.bashrc
 fi
-if ! grep -q "alias skip=" ~/.bashrc; then
-    echo 'alias skip="source skip-branch/bin/activate"' >> ~/.bashrc
-fi
 if ! grep -q "alias ecmwf=" ~/.bashrc; then
     echo 'alias ecmwf="source ecmwf/bin/activate"' >> ~/.bashrc
 fi
@@ -43,12 +40,6 @@ uv venv v2-dev
 source v2-dev/bin/activate
 uv pip install git+https://github.com/mercator-ocean/copernicus-marine-toolbox ipykernel
 v2-dev/bin/python -m ipykernel install --user --name v2-dev
-deactivate
-
-uv venv skip-branch
-source skip-branch/bin/activate
-uv pip install git+https://github.com/mercator-ocean/copernicus-marine-toolbox@skip-existing-main ipykernel
-skip-branch/bin/python -m ipykernel install --user --name skip
 deactivate
 
 uv venv v1-dev
