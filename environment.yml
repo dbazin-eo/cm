@@ -20,14 +20,14 @@ dependencies:
   - ipython
   - ipywidgets
   - jq
-  - lux
+  #- lux
   - nodejs
   #- numba
-  - jupyter-offlinenotebook
+  #- jupyter-offlinenotebook
   - panel
   - pip
-  - pip:
-    - pandasai
+  #- pip:
+  #  - pandasai
   - polars
   - pyproj
   - python<3.13
@@ -40,7 +40,7 @@ dependencies:
   - session-info
   - s5cmd
   - speedtest-cli
-  - ydata-profiling
+  #- ydata-profiling
   #- r-base
   #- r-tidyverse
   #- r-raster
