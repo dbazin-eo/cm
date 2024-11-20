@@ -30,7 +30,7 @@ dependencies:
   #  - pandasai
   - polars
   - pyproj
-  - python<3.13
+  - python
   - python-duckdb
   - rasterio
   - rioxarray
