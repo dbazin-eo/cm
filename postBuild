@@ -32,7 +32,7 @@ deactivate
 
 uv venv pre-release
 source pre-release/bin/activate
-uv pip install 'copernicusmarine>=2.0.0a2' ipykernel
+uv pip install 'copernicusmarine>=2.0.0a4' ipykernel
 pre-release/bin/python -m ipykernel install --user --name pre
 deactivate
 
