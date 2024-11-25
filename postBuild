@@ -2,16 +2,16 @@
 
 # Add aliases to .bashrc only if they don't already exist
 if ! grep -q "alias v1=" ~/.bashrc; then
-    echo 'alias v1="source v1-latest/bin/activate"' >> ~/.bashrc
+    echo 'alias v1="source v1/bin/activate"' >> ~/.bashrc
 fi
-if ! grep -q "alias v1-dev=" ~/.bashrc; then
-    echo 'alias v1="source v1-dev/bin/activate"' >> ~/.bashrc
+if ! grep -q "alias v1dev=" ~/.bashrc; then
+    echo 'alias v1="source v1dev/bin/activate"' >> ~/.bashrc
 fi
 if ! grep -q "alias pre=" ~/.bashrc; then
     echo 'alias pre="source pre-release/bin/activate"' >> ~/.bashrc
 fi
 if ! grep -q "alias v2=" ~/.bashrc; then
-    echo 'alias v2="source v2-dev/bin/activate"' >> ~/.bashrc
+    echo 'alias v2="source v2dev/bin/activate"' >> ~/.bashrc
 fi
 if ! grep -q "alias ecmwf=" ~/.bashrc; then
     echo 'alias ecmwf="source ecmwf/bin/activate"' >> ~/.bashrc
@@ -24,10 +24,16 @@ uv pip install "earthkit-data[all]" hda ipykernel earthaccess
 ecmwf/bin/python -m ipykernel install --user --name ecmwf
 deactivate
 
-uv venv v1-latest
-source v1-latest/bin/activate
+uv venv v1
+source v1/bin/activate
 uv pip install "copernicusmarine<2.0.0" ipykernel
-v1-latest/bin/python -m ipykernel install --user --name v1
+v1/bin/python -m ipykernel install --user --name v1
+deactivate
+
+uv venv v1dev
+source v1dev/bin/activate
+uv pip install git+https://github.com/mercator-ocean/copernicus-marine-toolbox@release/v1 ipykernel
+v1dev/bin/python -m ipykernel install --user --name v1dev
 deactivate
 
 uv venv pre-release
@@ -36,14 +42,8 @@ uv pip install 'copernicusmarine>=2.0.0a4' ipykernel
 pre-release/bin/python -m ipykernel install --user --name pre
 deactivate
 
-uv venv v2-dev
-source v2-dev/bin/activate
+uv venv v2dev
+source v2dev/bin/activate
 uv pip install git+https://github.com/mercator-ocean/copernicus-marine-toolbox ipykernel
-v2-dev/bin/python -m ipykernel install --user --name v2-dev
-deactivate
-
-uv venv v1-dev
-source v1-dev/bin/activate
-uv pip install git+https://github.com/mercator-ocean/copernicus-marine-toolbox@release/v1 ipykernel
-v1-dev/bin/python -m ipykernel install --user --name v1-dev
+v2dev/bin/python -m ipykernel install --user --name v2dev
 deactivate
