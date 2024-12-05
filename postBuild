@@ -20,30 +20,30 @@ fi
 
 uv venv ecmwf
 source ecmwf/bin/activate
-uv pip install "earthkit-data[all]" hda ipykernel earthaccess
+uv pip install "earthkit-data[all]" hda ipykernel earthaccess ipywidgets
 ecmwf/bin/python -m ipykernel install --user --name ecmwf
 deactivate
 
 uv venv v1
 source v1/bin/activate
-uv pip install "copernicusmarine<2.0.0" ipykernel
+uv pip install "copernicusmarine<2.0.0" ipykernel ipywidgets
 v1/bin/python -m ipykernel install --user --name v1
 deactivate
 
 uv venv v1-dev
 source v1-dev/bin/activate
-uv pip install git+https://github.com/mercator-ocean/copernicus-marine-toolbox@release/v1 ipykernel
+uv pip install git+https://github.com/mercator-ocean/copernicus-marine-toolbox@release/v1 ipykernel ipywidgets
 v1-dev/bin/python -m ipykernel install --user --name v1-dev
 deactivate
 
 uv venv pre-release
 source pre-release/bin/activate
-uv pip install 'copernicusmarine>=2.0.0a4' ipykernel
+uv pip install 'copernicusmarine>=2.0.0a4' ipykernel ipywidgets
 pre-release/bin/python -m ipykernel install --user --name pre
 deactivate
 
 uv venv v2-dev
 source v2-dev/bin/activate
-uv pip install git+https://github.com/mercator-ocean/copernicus-marine-toolbox ipykernel
+uv pip install git+https://github.com/mercator-ocean/copernicus-marine-toolbox ipykernel ipywidgets
 v2-dev/bin/python -m ipykernel install --user --name v2-dev
 deactivate
