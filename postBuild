@@ -38,7 +38,7 @@ deactivate
 
 uv venv pre-release
 source pre-release/bin/activate
-uv pip install 'copernicusmarine>=2.0.0a4' ipykernel ipywidgets matplotlib
+uv pip install 'copernicusmarine>=2.0.0a4' ipykernel ipywidgets matplotlib 'zarr<2.17.2'
 pre-release/bin/python -m ipykernel install --user --name pre
 deactivate
 
