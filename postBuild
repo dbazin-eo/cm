@@ -18,6 +18,8 @@ fi
 #fi
 
 
+# remove due to too many bugs plus ECMWF APIs are too unstable, nothing can be built on ATM (dec 2024)
+# better to wait for 2025 or 2026 ^_^
 #uv venv ecmwf
 #source ecmwf/bin/activate
 #uv pip install "earthkit-data[all]" hda ipykernel earthaccess ipywidgets matplotlib
