@@ -5,6 +5,7 @@ channels:
 dependencies:
   - cartopy
   - cmocean
+  - copernicusmarine
   - bottleneck
   - dasel
   - datashader
@@ -33,7 +34,6 @@ dependencies:
   - python
   - python-duckdb
   - rasterio
-  - rioxarray
   - uv
   - zarr
   - rioxarray
