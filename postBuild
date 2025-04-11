@@ -1,51 +1,30 @@
 #!/bin/bash
 
 # Add aliases to .bashrc only if they don't already exist
-if ! grep -q "alias v1=" ~/.bashrc; then
-    echo 'alias v1="source v1/bin/activate"' >> ~/.bashrc
-fi
-if ! grep -q "alias v1-dev=" ~/.bashrc; then
-    echo 'alias v1-dev="source v1-dev/bin/activate"' >> ~/.bashrc
-fi
-if ! grep -q "alias pre=" ~/.bashrc; then
-    echo 'alias pre="source pre-release/bin/activate"' >> ~/.bashrc
-fi
+# if ! grep -q "alias pre=" ~/.bashrc; then
+#     echo 'alias pre="source pre-release/bin/activate"' >> ~/.bashrc
+# fi
 if ! grep -q "alias v2=" ~/.bashrc; then
-    echo 'alias v2="source v2-dev/bin/activate"' >> ~/.bashrc
+    echo 'alias v2="source v2/bin/activate"' >> ~/.bashrc
 fi
-#if ! grep -q "alias ecmwf=" ~/.bashrc; then
-#    echo 'alias ecmwf="source ecmwf/bin/activate"' >> ~/.bashrc
-#fi
+# if ! grep -q "alias v2-dev=" ~/.bashrc; then
+#     echo 'alias v2-dev="source v2-dev/bin/activate"' >> ~/.bashrc
+# fi
 
+# uv venv v2-dev
+# source v2-dev/bin/activate
+# uv pip install git+https://github.com/mercator-ocean/copernicus-marine-toolbox ipykernel ipywidgets matplotlib rioxarray geopandas geoviews hvplot scipy netcdf4
+# v1-dev/bin/python -m ipykernel install --user --name v2-dev
+# deactivate
 
-# remove due to too many bugs plus ECMWF APIs are too unstable, nothing can be built on ATM (dec 2024)
-# better to wait for 2025 or 2026 ^_^
-#uv venv ecmwf
-#source ecmwf/bin/activate
-#uv pip install "earthkit-data[all]" hda ipykernel earthaccess ipywidgets matplotlib
-#ecmwf/bin/python -m ipykernel install --user --name ecmwf
-#deactivate
+# uv venv pre-release
+# source pre-release/bin/activate
+# uv pip install 'copernicusmarine>=2.1.0b1' ipykernel ipywidgets matplotlib rioxarray geopandas geoviews hvplot scipy netcdf4 'zarr<2.17.2'
+# pre-release/bin/python -m ipykernel install --user --name pre
+# deactivate
 
-uv venv v1
-source v1/bin/activate
-uv pip install "copernicusmarine<2.0.0" ipykernel ipywidgets matplotlib
-v1/bin/python -m ipykernel install --user --name v1
-deactivate
-
-uv venv v1-dev
-source v1-dev/bin/activate
-uv pip install git+https://github.com/mercator-ocean/copernicus-marine-toolbox@release/v1 ipykernel ipywidgets matplotlib
-v1-dev/bin/python -m ipykernel install --user --name v1-dev
-deactivate
-
-uv venv pre-release
-source pre-release/bin/activate
-uv pip install 'copernicusmarine>=2.0.0a4' ipykernel ipywidgets matplotlib 'zarr<2.17.2'
-pre-release/bin/python -m ipykernel install --user --name pre
-deactivate
-
-uv venv v2-dev
-source v2-dev/bin/activate
-uv pip install git+https://github.com/mercator-ocean/copernicus-marine-toolbox ipykernel ipywidgets matplotlib
-v2-dev/bin/python -m ipykernel install --user --name v2-dev
+uv venv v2
+source v2/bin/activate
+uv pip install copernicusmarine ipykernel ipywidgets matplotlib rioxarray geopandas geoviews hvplot scipy netcdf4 cmocean
+v2/bin/python -m ipykernel install --user --name Python (copernicusmarine)
 deactivate
