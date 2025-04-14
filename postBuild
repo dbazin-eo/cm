@@ -31,6 +31,6 @@ rm -rf cyclone.zip
 uv venv
 source .venv/bin/activate
 uv pip install copernicusmarine ipykernel ipywidgets matplotlib rioxarray geopandas geoviews hvplot scipy netcdf4 cmocean
-.venv/bin/python -m ipykernel install --user --name "Python (copernicusmarine)"
+.venv/bin/python -m ipykernel install --user --name "Python-Marine"
 
 
