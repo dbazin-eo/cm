@@ -13,6 +13,7 @@ dependencies:
   - fire
   - fx
   - fzf
+  - geopandas
   - geoviews
   - git
   - hvplot
@@ -22,6 +23,7 @@ dependencies:
   - ipywidgets
   - jq
   #- lux
+  - netcdf4
   - nodejs
   #- numba
   #- jupyter-offlinenotebook
@@ -38,6 +40,7 @@ dependencies:
   - zarr
   - rioxarray
   - session-info
+  - scipy
   - s5cmd
   - speedtest-cli
   #- ydata-profiling
