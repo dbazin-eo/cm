@@ -33,7 +33,7 @@ dependencies:
   #  - pandasai
   #- polars
   #- pyproj
-  - python
+  - python=3.12
   #- python-duckdb
   #- rasterio
   - uv
