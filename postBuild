@@ -5,7 +5,7 @@
 #     echo 'alias pre="source pre-release/bin/activate"' >> ~/.bashrc
 # fi
 if ! grep -q "alias v2=" ~/.bashrc; then
-    echo 'alias v2="source v2/bin/activate"' >> ~/.bashrc
+    echo 'alias v2="source .venv/bin/activate"' >> ~/.bashrc
 fi
 # if ! grep -q "alias v2-dev=" ~/.bashrc; then
 #     echo 'alias v2-dev="source v2-dev/bin/activate"' >> ~/.bashrc
@@ -23,8 +23,13 @@ fi
 # pre-release/bin/python -m ipykernel install --user --name pre
 # deactivate
 
-uv venv v2
-source v2/bin/activate
+wget "https://atlas.mercator-ocean.fr/s/ek2na2WGWdLW4ft/download" -O cyclone.zip
+mkdir essentials
+bsdtar -xf cyclone.zip --strip-components=1 -C essentials
+
+uv venv
+source .venv/bin/activate
 uv pip install copernicusmarine ipykernel ipywidgets matplotlib rioxarray geopandas geoviews hvplot scipy netcdf4 cmocean
-v2/bin/python -m ipykernel install --user --name Python (copernicusmarine)
-deactivate
+.venv/bin/python -m ipykernel install --user --name Python (copernicusmarine)
+
+
