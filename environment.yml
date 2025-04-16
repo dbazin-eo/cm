@@ -3,28 +3,29 @@ channels:
   - conda-forge
   - dnachun
 dependencies:
-  #- cartopy
-  #- cmocean
+  - cartopy
+  - cmocean
   - copernicusmarine
   #- bottleneck
   - dasel
   #- datashader
   #- dtale
-  - fire
+  #- fire
   - fx
   - fzf
-  #- geopandas
-  #- geoviews
+  - geopandas
+  - geoviews
   - git
-  #- hvplot
+  - hvplot
   - ipyleaflet
   - ipykernel
   - ipython
   - ipywidgets
   - jq
   #- lux
-  #- netcdf4
+  - netcdf4
   - nodejs
+  - nco
   #- numba
   #- jupyter-offlinenotebook
   - panel
@@ -33,14 +34,14 @@ dependencies:
   #  - pandasai
   #- polars
   #- pyproj
-  - python=3.12
+  - python<3.13
   #- python-duckdb
   #- rasterio
   - uv
   #- zarr
-  #- rioxarray
+  - rioxarray
   #- session-info
-  #- scipy
+  - scipy
   - s5cmd
   #- speedtest-cli
   #- ydata-profiling
