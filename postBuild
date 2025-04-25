@@ -23,7 +23,7 @@ fi
 # pre-release/bin/python -m ipykernel install --user --name pre
 # deactivate
 
-wget "https://atlas.mercator-ocean.fr/s/ek2na2WGWdLW4ft/download" -O cyclone.zip
+wget "https://atlas.mercator-ocean.fr/s/i76MKm9zbbkJNW4/download" -O cyclone.zip
 mkdir essentials
 bsdtar -xf cyclone.zip --strip-components=1 -C essentials
 rm -rf cyclone.zip
