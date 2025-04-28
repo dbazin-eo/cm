@@ -1,28 +1,5 @@
 #!/bin/bash
 
-# Add aliases to .bashrc only if they don't already exist
-# if ! grep -q "alias pre=" ~/.bashrc; then
-#     echo 'alias pre="source pre-release/bin/activate"' >> ~/.bashrc
-# fi
-if ! grep -q "alias v2=" ~/.bashrc; then
-    echo 'alias v2="source .venv/bin/activate"' >> ~/.bashrc
-fi
-# if ! grep -q "alias v2-dev=" ~/.bashrc; then
-#     echo 'alias v2-dev="source v2-dev/bin/activate"' >> ~/.bashrc
-# fi
-
-# uv venv v2-dev
-# source v2-dev/bin/activate
-# uv pip install git+https://github.com/mercator-ocean/copernicus-marine-toolbox ipykernel ipywidgets matplotlib rioxarray geopandas geoviews hvplot scipy netcdf4
-# v2-dev/bin/python -m ipykernel install --user --name v2-dev
-# deactivate
-
-# uv venv pre-release
-# source pre-release/bin/activate
-# uv pip install 'copernicusmarine>=2.1.0b1' ipykernel ipywidgets matplotlib rioxarray geopandas geoviews hvplot scipy netcdf4 'zarr<2.17.2'
-# pre-release/bin/python -m ipykernel install --user --name pre
-# deactivate
-
 wget "https://atlas.mercator-ocean.fr/s/i76MKm9zbbkJNW4/download" -O cyclone.zip
 mkdir essentials
 bsdtar -xf cyclone.zip --strip-components=1 -C essentials
