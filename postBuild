@@ -14,7 +14,7 @@ fi
 # uv venv v2-dev
 # source v2-dev/bin/activate
 # uv pip install git+https://github.com/mercator-ocean/copernicus-marine-toolbox ipykernel ipywidgets matplotlib rioxarray geopandas geoviews hvplot scipy netcdf4
-# v1-dev/bin/python -m ipykernel install --user --name v2-dev
+# v2-dev/bin/python -m ipykernel install --user --name v2-dev
 # deactivate
 
 # uv venv pre-release
@@ -27,6 +27,11 @@ wget "https://atlas.mercator-ocean.fr/s/i76MKm9zbbkJNW4/download" -O cyclone.zip
 mkdir essentials
 bsdtar -xf cyclone.zip --strip-components=1 -C essentials
 rm -rf cyclone.zip
+
+wget "https://atlas.mercator-ocean.fr/s/f7ZpzWgnASPMoWF/download" -O essentials-python-manipulation.zip
+mkdir essentials-python-manipulation
+bsdtar -xf essentials-python-manipulation.zip --strip-components=1 -C essentials-python-manipulation
+rm -rf essentials-python-manipulation.zip
 
 uv venv
 source .venv/bin/activate
