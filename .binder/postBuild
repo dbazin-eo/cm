@@ -1,9 +1,8 @@
 #!/bin/bash
 
-wget "https://atlas.mercator-ocean.fr/s/i76MKm9zbbkJNW4/download" -O cyclone.zip
-mkdir essentials
-bsdtar -xf cyclone.zip --strip-components=1 -C essentials
-rm -rf cyclone.zip
+wget "https://atlas.mercator-ocean.fr/s/dBY8WJN86RxoNYG/download" -O cyclone-ready.tar.gz
+tar -xvf cyclone-ready.tar.gz
+rm -rf cyclone-ready.tar.gz
 
 wget "https://atlas.mercator-ocean.fr/s/f7ZpzWgnASPMoWF/download" -O essentials-python-manipulation.zip
 mkdir essentials-python-manipulation
@@ -14,5 +13,3 @@ uv venv
 source .venv/bin/activate
 uv pip install copernicusmarine ipykernel ipywidgets matplotlib rioxarray geopandas geoviews hvplot scipy netcdf4 cmocean
 .venv/bin/python -m ipykernel install --user --name "Python-Marine"
-
-
