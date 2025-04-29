@@ -4,10 +4,9 @@ wget "https://atlas.mercator-ocean.fr/s/dBY8WJN86RxoNYG/download" -O cyclone-rea
 tar -xvf cyclone-ready.tar.gz
 rm -rf cyclone-ready.tar.gz
 
-wget "https://atlas.mercator-ocean.fr/s/f7ZpzWgnASPMoWF/download" -O essentials-python-manipulation.zip
-mkdir essentials-python-manipulation
-bsdtar -xf essentials-python-manipulation.zip --strip-components=1 -C essentials-python-manipulation
-rm -rf essentials-python-manipulation.zip
+wget "https://atlas.mercator-ocean.fr/s/N55zaDPrmWNneg9/download" -O essentials-python-manipulation.tar.gz
+tar -xvf essentials-python-manipulation.tar.gz
+rm -rf essentials-python-manipulation.tar.gz
 
 uv venv
 source .venv/bin/activate
