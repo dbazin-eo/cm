@@ -32,9 +32,8 @@ export LD_LIBRARY_PATH=${CONDA_PREFIX}/lib:${LD_LIBRARY_PATH}
 git clone --depth 1 --branch main https://github.com/Unidata/netcdf-c.git /tmp/netcdf-c
 cd /tmp/netcdf-c
 
-# Fix duplicate function - the duplicate starts at line 878 and goes to EOF
-# Just keep lines 1-877
-head -n 877 libdispatch/ncs3sdk_aws.cpp > libdispatch/ncs3sdk_aws.cpp.fixed
+# Fix duplicate function - cut at line 876 (before the duplicate function signature starts)
+head -n 876 libdispatch/ncs3sdk_aws.cpp > libdispatch/ncs3sdk_aws.cpp.fixed
 mv libdispatch/ncs3sdk_aws.cpp.fixed libdispatch/ncs3sdk_aws.cpp
 
 mkdir build && cd build
