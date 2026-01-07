@@ -36,6 +36,11 @@ export LD_LIBRARY_PATH=${CONDA_PREFIX}/lib:${LD_LIBRARY_PATH}
 # Now build netcdf-c with Zarr support
 git clone --depth 1 --branch zarr-csl-fully https://github.com/mannreis/netcdf-c.git /tmp/netcdf-c
 cd /tmp/netcdf-c
+
+# Fix the duplicate function definition bug
+# Remove the second definition of NC_s3sdklistall (lines 878-1036)
+sed -i '878,1036d' libdispatch/ncs3sdk_aws.cpp
+
 mkdir build && cd build
 
 cmake .. \
