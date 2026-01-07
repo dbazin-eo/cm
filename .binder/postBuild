@@ -32,6 +32,10 @@ export LD_LIBRARY_PATH=${CONDA_PREFIX}/lib:${LD_LIBRARY_PATH}
 git clone --depth 1 --branch main https://github.com/Unidata/netcdf-c.git /tmp/netcdf-c
 cd /tmp/netcdf-c
 
+# After cloning, before patching:
+echo "File has $(wc -l < libdispatch/ncs3sdk_aws.cpp) lines"
+grep -n "^NC_s3sdklistall" libdispatch/ncs3sdk_aws.cpp
+
 # Fix duplicate function - keep lines 1-877, skip 878-1036, keep 1037+
 head -n 877 libdispatch/ncs3sdk_aws.cpp > /tmp/temp_file.cpp
 tail -n +1037 libdispatch/ncs3sdk_aws.cpp >> /tmp/temp_file.cpp
