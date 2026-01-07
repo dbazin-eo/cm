@@ -33,26 +33,9 @@ cd /tmp && rm -rf aws-sdk-cpp
 export PKG_CONFIG_PATH=${CONDA_PREFIX}/lib/pkgconfig:${PKG_CONFIG_PATH}
 export LD_LIBRARY_PATH=${CONDA_PREFIX}/lib:${LD_LIBRARY_PATH}
 
-# Now build netcdf-c with Zarr support
-git clone --depth 1 --branch zarr-csl-fully https://github.com/mannreis/netcdf-c.git /tmp/netcdf-c
+# Now build netcdf-c with Zarr support from official Unidata repository
+git clone --depth 1 --branch main https://github.com/Unidata/netcdf-c.git /tmp/netcdf-c
 cd /tmp/netcdf-c
-
-# Check file length and look for duplicate function
-echo "=== File info ==="
-wc -l libdispatch/ncs3sdk_aws.cpp
-echo "=== Finding NC_s3sdklistall occurrences ==="
-grep -n "^NC_s3sdklistall" libdispatch/ncs3sdk_aws.cpp || grep -n "NC_s3sdklistall" libdispatch/ncs3sdk_aws.cpp | head -5
-echo "=== Lines 698-705 ==="
-sed -n '698,705p' libdispatch/ncs3sdk_aws.cpp
-echo "=== Lines 875-882 ==="
-sed -n '875,882p' libdispatch/ncs3sdk_aws.cpp
-echo "================="
-
-# Use C-style block comment to comment out the duplicate
-# Insert /* at line 878 and */ at line 1036
-sed -i '878i\/*' libdispatch/ncs3sdk_aws.cpp
-sed -i '1038i\*/' libdispatch/ncs3sdk_aws.cpp
-
 mkdir build && cd build
 
 cmake .. \
