@@ -8,7 +8,7 @@ export CONDA_PREFIX=${CONDA_PREFIX:-${NB_PYTHON_PREFIX}}
 echo "CMake version:"
 cmake --version
 
-# Install AWS SDK for C++ - clone with submodules, use version known to work
+# Install AWS SDK for C++ - include transfer component
 cd /tmp
 git clone --recurse-submodules --depth 1 --branch 1.11.100 https://github.com/aws/aws-sdk-cpp.git
 cd aws-sdk-cpp
@@ -17,7 +17,7 @@ mkdir build && cd build
 cmake .. \
   -DCMAKE_INSTALL_PREFIX=${CONDA_PREFIX} \
   -DCMAKE_BUILD_TYPE=Release \
-  -DBUILD_ONLY="s3" \
+  -DBUILD_ONLY="s3;transfer" \
   -DENABLE_TESTING=OFF \
   -DBUILD_SHARED_LIBS=ON \
   -DCMAKE_INSTALL_LIBDIR=lib \
@@ -51,7 +51,8 @@ cmake .. \
   -DPLUGIN_INSTALL_DIR=${CONDA_PREFIX}/lib/netcdf/plugins \
   -DAWSSDK_DIR=${CONDA_PREFIX}/lib/cmake/AWSSDK \
   -Daws-cpp-sdk-core_DIR=${CONDA_PREFIX}/lib/cmake/aws-cpp-sdk-core \
-  -Daws-cpp-sdk-s3_DIR=${CONDA_PREFIX}/lib/cmake/aws-cpp-sdk-s3
+  -Daws-cpp-sdk-s3_DIR=${CONDA_PREFIX}/lib/cmake/aws-cpp-sdk-s3 \
+  -Daws-cpp-sdk-transfer_DIR=${CONDA_PREFIX}/lib/cmake/aws-cpp-sdk-transfer
 
 make -j2
 make install
