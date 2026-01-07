@@ -4,9 +4,12 @@ set -ex
 # Set conda prefix if not set
 export CONDA_PREFIX=${CONDA_PREFIX:-${NB_PYTHON_PREFIX}}
 
-# Install AWS SDK for C++ from source (lightweight S3-only build)
+# Verify CMake version
+cmake --version
+
+# Install AWS SDK for C++ from source (use older stable version)
 cd /tmp
-git clone --recurse-submodules --depth 1 --branch 1.11.200 https://github.com/aws/aws-sdk-cpp.git
+git clone --recurse-submodules --depth 1 --branch 1.9.379 https://github.com/aws/aws-sdk-cpp.git
 cd aws-sdk-cpp
 mkdir build && cd build
 
@@ -16,7 +19,8 @@ cmake .. \
   -DBUILD_ONLY="s3" \
   -DENABLE_TESTING=OFF \
   -DBUILD_SHARED_LIBS=ON \
-  -DCMAKE_INSTALL_LIBDIR=lib
+  -DCMAKE_INSTALL_LIBDIR=lib \
+  -DCMAKE_CXX_STANDARD=11
 
 make -j2
 make install
@@ -46,7 +50,7 @@ make install
 
 # Verify installation
 which ncdump
-ncdump -h 2>&1 | head -5 || true
+ncdump -h 2>&1 | head -10 || true
 
 # Cleanup
 cd /tmp && rm -rf netcdf-c
