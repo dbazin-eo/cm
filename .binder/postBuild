@@ -28,11 +28,15 @@ cd /tmp && rm -rf aws-sdk-cpp
 export PKG_CONFIG_PATH=${CONDA_PREFIX}/lib/pkgconfig:${PKG_CONFIG_PATH}
 export LD_LIBRARY_PATH=${CONDA_PREFIX}/lib:${LD_LIBRARY_PATH}
 
-# Build netcdf-c
-git clone --depth 1 --branch main https://github.com/Unidata/netcdf-c.git /tmp/netcdf-c
+# Build netcdf-c from mannreis branch (has better S3/Zarr support)
+git clone --depth 1 --branch zarr-csl-fully https://github.com/mannreis/netcdf-c.git /tmp/netcdf-c
 cd /tmp/netcdf-c
 
-# Fix duplicate function - cut at line 876 (before the duplicate function signature starts)
+# Check and fix duplicate function
+echo "Checking for duplicate NC_s3sdklistall..."
+grep -n "^NC_s3sdklistall" libdispatch/ncs3sdk_aws.cpp || true
+
+# The file should have the duplicate at line 878, cut before it starts
 head -n 876 libdispatch/ncs3sdk_aws.cpp > libdispatch/ncs3sdk_aws.cpp.fixed
 mv libdispatch/ncs3sdk_aws.cpp.fixed libdispatch/ncs3sdk_aws.cpp
 
@@ -62,12 +66,18 @@ ncdump -h 2>&1 | head -10 || true
 
 cd /tmp && rm -rf netcdf-c
 
-#mkdir -p ${HOME}/.aws
-#cat > ${HOME}/.aws/config << 'EOF'
-#[default]
-#region = eu-central-1
-#EOF
+# Set environment variables
+echo "export LD_LIBRARY_PATH=${CONDA_PREFIX}/lib:\${LD_LIBRARY_PATH}" >> ${HOME}/.bashrc
+echo "export AWS_NO_SIGN_REQUEST=YES" >> ${HOME}/.bashrc
+echo "export AWS_ANON=YES" >> ${HOME}/.bashrc
+echo "export AWS_EC2_METADATA_DISABLED=true" >> ${HOME}/.bashrc
 
-# echo "export AWS_NO_SIGN_REQUEST=YES" >> ${HOME}/.bashrc
+# Create .netrc for anonymous access
+cat > ${HOME}/.netrc << 'EOF'
+machine s3.waw3-1.cloudferro.com
+    login anonymous
+    password anonymous
+EOF
+chmod 600 ${HOME}/.netrc
 
 echo "NetCDF-C with Zarr/S3 support installed successfully"
