@@ -62,12 +62,12 @@ ncdump -h 2>&1 | head -10 || true
 
 cd /tmp && rm -rf netcdf-c
 
-mkdir -p ${HOME}/.aws
-cat > ${HOME}/.aws/config << 'EOF'
-[default]
-region = eu-central-1
-EOF
+#mkdir -p ${HOME}/.aws
+#cat > ${HOME}/.aws/config << 'EOF'
+#[default]
+#region = eu-central-1
+#EOF
 
-echo "export AWS_NO_SIGN_REQUEST=YES" >> ${HOME}/.bashrc
+# echo "export AWS_NO_SIGN_REQUEST=YES" >> ${HOME}/.bashrc
 
 echo "NetCDF-C with Zarr/S3 support installed successfully"
