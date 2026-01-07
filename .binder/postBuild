@@ -1,18 +1,46 @@
 #!/bin/bash
+set -ex
 
-wget "https://atlas.mercator-ocean.fr/s/i76MKm9zbbkJNW4/download" -O cyclone.zip
-mkdir essentials
-bsdtar -xf cyclone.zip --strip-components=1 -C essentials
-rm -rf cyclone.zip
+# Clone the specific zarr-enabled branch
+git clone --depth 1 --branch zarr-csl-fully https://github.com/mannreis/netcdf-c.git /tmp/netcdf-c
 
-wget "https://atlas.mercator-ocean.fr/s/f7ZpzWgnASPMoWF/download" -O essentials-python-manipulation.zip
-mkdir essentials-python-manipulation
-bsdtar -xf essentials-python-manipulation.zip --strip-components=1 -C essentials-python-manipulation
-rm -rf essentials-python-manipulation.zip
+cd /tmp/netcdf-c
+mkdir build && cd build
 
-uv venv
-source .venv/bin/activate
-uv pip install copernicusmarine ipykernel ipywidgets matplotlib rioxarray geopandas geoviews hvplot scipy netcdf4 cmocean
-.venv/bin/python -m ipykernel install --user --name "Python-Marine"
+# Configure with Zarr and S3 support enabled
+cmake .. \
+  -DCMAKE_INSTALL_PREFIX=${CONDA_PREFIX} \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DENABLE_TESTS=OFF \
+  -DENABLE_DAP=ON \
+  -DENABLE_NCZARR=ON \
+  -DENABLE_S3=ON \
+  -DENABLE_NCZARR_S3=ON \
+  -DENABLE_NCZARR_ZIP=ON \
+  -DPLUGIN_INSTALL_DIR=${CONDA_PREFIX}/lib/netcdf/plugins
 
+make -j$(nproc)
+make install
 
+# Verify installation
+${CONDA_PREFIX}/bin/ncdump -h 2>&1 | head -5
+
+# Cleanup
+cd /tmp && rm -rf netcdf-c
+
+# Configure AWS (for anonymous S3 access)
+mkdir -p ${HOME}/.aws
+cat > ${HOME}/.aws/config << EOF
+[default]
+region = eu-central-1
+s3 =
+    signature_version = s3v4
+EOF
+
+cat > ${HOME}/.aws/credentials << EOF
+[default]
+aws_access_key_id = 
+aws_secret_access_key = 
+EOF
+
+echo "NetCDF-C with Zarr/S3 support installed successfully"
