@@ -10,8 +10,9 @@ dependencies:
   - make
   - gcc_linux-64
   - gxx_linux-64
-  - aws-sdk-cpp
   - libzip
   - blosc
   - zstd
   - git
+  - pkg-config
+  - openssl
