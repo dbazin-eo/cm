@@ -28,18 +28,14 @@ cd /tmp && rm -rf aws-sdk-cpp
 export PKG_CONFIG_PATH=${CONDA_PREFIX}/lib/pkgconfig:${PKG_CONFIG_PATH}
 export LD_LIBRARY_PATH=${CONDA_PREFIX}/lib:${LD_LIBRARY_PATH}
 
-# Build netcdf-c with Zarr support
+# Build netcdf-c
 git clone --depth 1 --branch main https://github.com/Unidata/netcdf-c.git /tmp/netcdf-c
 cd /tmp/netcdf-c
 
-# After cloning, before patching:
-echo "File has $(wc -l < libdispatch/ncs3sdk_aws.cpp) lines"
-grep -n "^NC_s3sdklistall" libdispatch/ncs3sdk_aws.cpp
-
-# Fix duplicate function - keep lines 1-877, skip 878-1036, keep 1037+
-head -n 877 libdispatch/ncs3sdk_aws.cpp > /tmp/temp_file.cpp
-tail -n +1037 libdispatch/ncs3sdk_aws.cpp >> /tmp/temp_file.cpp
-mv /tmp/temp_file.cpp libdispatch/ncs3sdk_aws.cpp
+# Fix duplicate function - the duplicate starts at line 878 and goes to EOF
+# Just keep lines 1-877
+head -n 877 libdispatch/ncs3sdk_aws.cpp > libdispatch/ncs3sdk_aws.cpp.fixed
+mv libdispatch/ncs3sdk_aws.cpp.fixed libdispatch/ncs3sdk_aws.cpp
 
 mkdir build && cd build
 
