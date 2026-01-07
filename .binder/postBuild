@@ -8,16 +8,14 @@ export CONDA_PREFIX=${CONDA_PREFIX:-${NB_PYTHON_PREFIX}}
 echo "CMake version:"
 cmake --version
 
-# Install AWS SDK for C++ - use even older version that's more compatible
+# Install AWS SDK for C++ - use version compatible with cmake 3.x
 cd /tmp
 wget https://github.com/aws/aws-sdk-cpp/archive/refs/tags/1.8.186.tar.gz
 tar -xzf 1.8.186.tar.gz
 cd aws-sdk-cpp-1.8.186
 mkdir build && cd build
 
-# Add the policy version flag as suggested by the error
 cmake .. \
-  -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
   -DCMAKE_INSTALL_PREFIX=${CONDA_PREFIX} \
   -DCMAKE_BUILD_TYPE=Release \
   -DBUILD_ONLY="s3" \
