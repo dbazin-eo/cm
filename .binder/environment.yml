@@ -1,64 +1,17 @@
-name: cmt
+name: netcdf-zarr
 channels:
   - conda-forge
-  - dnachun
 dependencies:
-  - cartopy
-  - cmocean
-  - copernicusmarine
-  #- bottleneck
-  - dasel
-  #- datashader
-  #- dtale
-  #- fire
-  - fx
-  - fzf
-  - geopandas
-  - geoviews
+  - hdf5
+  - zlib
+  - curl
+  - libcurl
+  - cmake >=3.15
+  - make
+  - gcc_linux-64
+  - gxx_linux-64
+  - aws-sdk-cpp
+  - libzip
+  - blosc
+  - zstd
   - git
-  - hvplot
-  - ipyleaflet
-  - ipykernel
-  - ipython
-  - ipywidgets
-  - jq
-  #- lux
-  - netcdf4
-  - nodejs
-  - nco
-  #- numba
-  #- jupyter-offlinenotebook
-  - panel
-  - pip
-  #- pip:
-  #  - pandasai
-  #- polars
-  #- pyproj
-  - python<3.13
-  #- python-duckdb
-  #- rasterio
-  - uv
-  #- zarr
-  - rioxarray
-  #- session-info
-  - scipy
-  - s5cmd
-  #- speedtest-cli
-  #- ydata-profiling
-  #- r-base
-  #- r-tidyverse
-  #- r-raster
-  #- r-ncdf4
-  #- r-rgdal
-  #- r-ggplot2
-  #- r-lubridate
-  #- r-sf
-  #- r-leaflet
-  #- r-terra
-  #- r-rastervis
-  #- r-rnaturalearthdata
-  #- r-rnaturalearth
-  #- r-codetools
-  #- r-httr
-  #- r-ncmeta
-  #- r-tidync
