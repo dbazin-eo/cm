@@ -8,11 +8,10 @@ export CONDA_PREFIX=${CONDA_PREFIX:-${NB_PYTHON_PREFIX}}
 echo "CMake version:"
 cmake --version
 
-# Install AWS SDK for C++ - use a newer version that works better with modern GCC
+# Install AWS SDK for C++ - clone with submodules, use version known to work
 cd /tmp
-wget https://github.com/aws/aws-sdk-cpp/archive/refs/tags/1.11.100.tar.gz
-tar -xzf 1.11.100.tar.gz
-cd aws-sdk-cpp-1.11.100
+git clone --recurse-submodules --depth 1 --branch 1.11.100 https://github.com/aws/aws-sdk-cpp.git
+cd aws-sdk-cpp
 mkdir build && cd build
 
 cmake .. \
@@ -28,7 +27,7 @@ make -j2
 make install
 
 # Cleanup AWS SDK build
-cd /tmp && rm -rf aws-sdk-cpp-1.11.100 1.11.100.tar.gz
+cd /tmp && rm -rf aws-sdk-cpp
 
 # Now build netcdf-c with Zarr support
 git clone --depth 1 --branch zarr-csl-fully https://github.com/mannreis/netcdf-c.git /tmp/netcdf-c
