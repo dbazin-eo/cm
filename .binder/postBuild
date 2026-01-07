@@ -37,14 +37,21 @@ export LD_LIBRARY_PATH=${CONDA_PREFIX}/lib:${LD_LIBRARY_PATH}
 git clone --depth 1 --branch zarr-csl-fully https://github.com/mannreis/netcdf-c.git /tmp/netcdf-c
 cd /tmp/netcdf-c
 
-# Check what's around line 878 to understand the structure better
-echo "=== Lines 875-880 and 1034-1040 ==="
-sed -n '875,880p; 1034,1040p' libdispatch/ncs3sdk_aws.cpp
-echo "==================================="
+# Check file length and look for duplicate function
+echo "=== File info ==="
+wc -l libdispatch/ncs3sdk_aws.cpp
+echo "=== Finding NC_s3sdklistall occurrences ==="
+grep -n "^NC_s3sdklistall" libdispatch/ncs3sdk_aws.cpp || grep -n "NC_s3sdklistall" libdispatch/ncs3sdk_aws.cpp | head -5
+echo "=== Lines 698-705 ==="
+sed -n '698,705p' libdispatch/ncs3sdk_aws.cpp
+echo "=== Lines 875-882 ==="
+sed -n '875,882p' libdispatch/ncs3sdk_aws.cpp
+echo "================="
 
-# Comment out the duplicate function (lines 878-1036) instead of deleting
-# This preserves file structure
-sed -i '878,1036s|^|//|' libdispatch/ncs3sdk_aws.cpp
+# Use C-style block comment to comment out the duplicate
+# Insert /* at line 878 and */ at line 1036
+sed -i '878i\/*' libdispatch/ncs3sdk_aws.cpp
+sed -i '1038i\*/' libdispatch/ncs3sdk_aws.cpp
 
 mkdir build && cd build
 
